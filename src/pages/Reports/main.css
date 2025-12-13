@@ -1,0 +1,45 @@
+/* Remove border radius globally from table and pagination */
+.ant-table,
+.ant-table-container,
+.ant-table-content,
+.ant-table-thead > tr > th,
+.ant-table-tbody > tr > td,
+.ant-table-pagination,
+.ant-pagination-item {
+	border-radius: 0 !important;
+}
+
+/* Center align header text and vertically middle */
+.ant-table-thead > tr > th {
+	text-align: center !important;
+	vertical-align: middle !important;
+}
+
+/* Make sure sticky header stays above fixed columns */
+.ant-table-sticky-header {
+	z-index: 10 !important;
+	background: #fff !important; /* ensure background when overlapping */
+}
+
+/* Left fixed column cell */
+.ant-table-cell-fix-left {
+	background: #fff !important; /* prevent transparency */
+	z-index: 5 !important;
+}
+
+/* When row is hovered, raise the left fixed cell z-index */
+.my-custom-table .ant-table-tbody > tr:hover > .ant-table-cell-fix-left {
+	z-index: 20 !important;
+	background: #fff !important;
+}
+
+/* Ensure fixed-left header cell stays above normal header */
+.ant-table-thead .ant-table-cell-fix-left {
+	z-index: 11 !important;
+	background: #fff !important;
+}
+
+/* Ensure sticky holder (header wrapper) is at top z-index */
+.ant-table-sticky-holder {
+	z-index: 12 !important;
+}

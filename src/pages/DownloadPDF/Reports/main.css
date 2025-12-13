@@ -1,0 +1,32 @@
+@media print {
+	.print-table {
+		background-color: #f0f0f0 !important; /* Force background color */
+		-webkit-print-color-adjust: exact; /* For WebKit browsers */
+		print-color-adjust: exact; /* For standard browsers */
+	}
+}
+.print-table {
+	background-color: #f0f0f0 !important; /* Force background color */
+}
+.title2 {
+	font-weight: bold;
+	font-size: 14px;
+	color: rgb(0, 0, 0);
+}
+.topCard {
+	display: flex;
+	justify-content: center;
+}
+.topTitle {
+	text-align: center;
+	margin: 10px 0;
+	font-weight: bold;
+	font-size: 14px;
+}
+.betweenCard2 {
+	border-bottom: 0.5px dashed gray;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	padding: 10px 0;
+}

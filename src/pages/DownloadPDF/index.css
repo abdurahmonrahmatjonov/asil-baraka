@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer utilities {
+	@variants print {
+		.print-bg-color {
+			-webkit-print-color-adjust: exact;
+			print-color-adjust: exact;
+		}
+	}
+}
+
+@media print {
+	@page {
+		size: A4 portrait;
+		margin: 1cm;
+	}
+
+	body {
+		background: none;
+	}
+
+	.print-container {
+		box-shadow: none;
+		padding: 0;
+	}
+}
