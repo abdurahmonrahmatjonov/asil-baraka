@@ -88,13 +88,13 @@ function Returns() {
 			key: "docDate",
 		},
 
-		{
-			title: t("docTotal"),
-			dataIndex: "docTotal",
-			key: "docTotal",
-			type: "number",
-			render: (text, record: ReturnTypes) => `${formatNumber(text)} 	${record.docCurrency}`,
-		},
+		// {
+		// 	title: t("docTotal"),
+		// 	dataIndex: "docTotal",
+		// 	key: "docTotal",
+		// 	type: "number",
+		// 	render: (text, record: ReturnTypes) => `${formatNumber(text)} 	${record.docCurrency}`,
+		// },
 
 		{
 			title: t("whs"),

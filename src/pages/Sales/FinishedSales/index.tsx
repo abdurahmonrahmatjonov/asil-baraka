@@ -266,7 +266,7 @@ function FinishedSales() {
 				isPrevPageDisabled={currentPage === 0}
 				showAddBtn
 				handleAddBtnClick={handleAddBtnClick}
-				addBtnText={t("addSales")}
+				addBtnText={t("add")}
 				isShowPageSize
 				handlePageSizeChange={handlePageSizeChange}
 				pageSize={pageSize}

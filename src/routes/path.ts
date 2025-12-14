@@ -9,7 +9,6 @@ export const PATHS = {
 	},
 
 	SALES: {
-		SALES: "/sales/sales",
 		FINISHED_SALES: "/sales/finished-sales",
 		SALES_REPORTS: "/sales/sales-reports",
 	},

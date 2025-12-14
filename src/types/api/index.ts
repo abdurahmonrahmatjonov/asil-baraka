@@ -6,6 +6,7 @@ interface BpTypes {
 	isValid: string;
 	slpCode: string;
 	slpName: string;
+	priceList: string;
 }
 interface BpGroupTypes {
 	code: string | number;

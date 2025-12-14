@@ -9,7 +9,6 @@ import { useLanguage } from "@/hooks/useLanguage";
 import { debouncedSet } from "@helpers/debounce";
 import formatNumber from "@/helpers/formatNumber";
 import { generateUrlWithParams } from "@/lib/helpers";
-
 import type { ColumnsTypes } from "@/components/ui/Table/types";
 import type { FilterTypes } from "@/components/ui/Filter/types";
 import type { ReturnResTypes, ReturnTypes } from "@/types/api/Returns";
@@ -83,13 +82,13 @@ function ReturnHistory() {
 			key: "docDate",
 		},
 
-		{
-			title: t("docTotal"),
-			dataIndex: "docTotal",
-			key: "docTotal",
-			type: "number",
-			render: (text, record: ReturnTypes) => `${formatNumber(text)} 	${record.docCurrency}`,
-		},
+		// {
+		// 	title: t("docTotal"),
+		// 	dataIndex: "docTotal",
+		// 	key: "docTotal",
+		// 	type: "number",
+		// 	render: (text, record: ReturnTypes) => `${formatNumber(text)} 	${record.docCurrency}`,
+		// },
 
 		{
 			title: t("whs"),

@@ -8,7 +8,7 @@ export function useGet<T>(
 	queryKey: string | Array<string | number>,
 	url: string,
 	isResDataInDataArr = true,
-	disabled = false
+	options = {}
 ): UseQueryResult<T, AxiosError> {
 	// const { showModal } = useAlertModal();
 
@@ -22,7 +22,7 @@ export function useGet<T>(
 				return isResDataInDataArr ? (response.data.data as T) : (response.data as T);
 			}),
 		retry: false,
-		enabled: !disabled,
+		...options,
 	});
 
 	useEffect(() => {

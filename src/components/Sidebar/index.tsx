@@ -30,12 +30,12 @@ export default function Sidebar() {
 		{
 			title: t("menu.shipments"),
 			icon: <ShoppingCart />,
-			path: PATHS.SALES.SALES,
+			path: PATHS.SALES.FINISHED_SALES,
 		},
 		{
 			title: t("menu.stock_transfers"),
 			icon: <Truck />,
-			path: PATHS.STOCKS.STOCK_PRODUCTS,
+			path: PATHS.STOCKS.INCOMING_PRODUCTS,
 		},
 
 		{

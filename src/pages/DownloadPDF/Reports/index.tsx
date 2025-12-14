@@ -3,8 +3,11 @@ import "./main.css";
 import "../index.css";
 import type { ReportsResDataTypes } from "@/types/api/Reports";
 import formatNumber from "@/helpers/formatNumber";
+import { useLanguage } from "@/hooks/useLanguage";
 
 const ReportsPDF: React.FC = () => {
+	const { t } = useLanguage("tab.reports");
+
 	const [data, setData] = useState<ReportsResDataTypes[]>([]);
 
 	useEffect(() => {
@@ -29,13 +32,14 @@ const ReportsPDF: React.FC = () => {
 					<thead>
 						<tr className=" text-black font-bold text-[15px]   print-bg-color">
 							<th className="border border-black px-2 py-1">№</th>
-							<th className="border border-black px-2 py-1">Tovar</th>
-							<th className="border border-black px-2 py-1">Oy boshi</th>
-							<th className="border border-black px-2 py-1">Prixod</th>
-							<th className="border border-black px-2 py-1">Rasxod</th>
-							<th className="border border-black px-2 py-1">Vozvrat</th>
-							<th className="border border-black px-2 py-1">Fakt</th>
-							<th className="border border-black px-2 py-1">O'lchov birligi</th>
+							<th className="border border-black px-2 py-1">{t("item")}</th>
+							<th className="border border-black px-2 py-1">{t("initialBalance")}</th>
+							<th className="border border-black px-2 py-1">{t("incomingQty")}</th>
+							<th className="border border-black px-2 py-1">{t("outgoingQty")}</th>
+							<th className="border border-black px-2 py-1">{t("returnedQty")}</th>
+							<th className="border border-black px-2 py-1">{t("fakt")}</th>
+							<th className="border border-black px-2 py-1">{t("groupName")}</th>
+							<th className="border border-black px-2 py-1">{t("unitOfMeasure")}</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -60,6 +64,9 @@ const ReportsPDF: React.FC = () => {
 										{formatNumber(item.fakt)}
 									</td>
 									<td className="border border-black  px-2 py-1 text-center">{item.itmsGrpNam}</td>
+									<td className="border border-black  px-2 py-1 text-center">
+										{item.unitOfMeasure}
+									</td>
 								</tr>
 							);
 						})}

@@ -40,7 +40,7 @@ function Section({
 						<Select
 							onChange={handlePageSizeChange}
 							value={pageSize}
-							className="w-[100px]"
+							className="!w-[100px]"
 							options={[10, 20, 30, 40, 50, 100].map((v) => ({ label: `${v} / page`, value: v }))}
 						/>
 					</div>

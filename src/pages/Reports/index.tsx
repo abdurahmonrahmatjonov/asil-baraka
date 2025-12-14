@@ -102,6 +102,11 @@ const Reports = () => {
 			dataIndex: "itmsGrpNam",
 			key: "itmsGrpNam",
 		},
+		{
+			title: t("unitOfMeasure"),
+			dataIndex: "unitOfMeasure",
+			key: "unitOfMeasure",
+		},
 	];
 
 	const filters: FilterTypes[] = [

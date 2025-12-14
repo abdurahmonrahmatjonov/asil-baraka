@@ -42,25 +42,25 @@ export default function ViewReturns({ isOpen, onClose, data, isShowAddBtn }: Vie
 			key: "quantity",
 			type: "number",
 		},
-		{
-			title: t("price"),
-			dataIndex: "price",
-			key: "price",
-			type: "number",
-			render: (text, record: DocumentLinesType) => (
-				<span>{`${formatNumber(text)} ${record.currency}`}</span>
-			),
-		},
+		// {
+		// 	title: t("price"),
+		// 	dataIndex: "price",
+		// 	key: "price",
+		// 	type: "number",
+		// 	render: (text, record: DocumentLinesType) => (
+		// 		<span>{`${formatNumber(text)} ${record.currency}`}</span>
+		// 	),
+		// },
 		{ title: t("whsName"), dataIndex: "whsName", key: "whsName" },
 
-		{
-			title: t("lineTotal"),
-			dataIndex: "lineTotal",
-			key: "lineTotal",
-			render: (text, record: DocumentLinesType) => (
-				<span>{`${formatNumber(+record.quantity * +record.price)} ${record.currency}`}</span>
-			),
-		},
+		// {
+		// 	title: t("lineTotal"),
+		// 	dataIndex: "lineTotal",
+		// 	key: "lineTotal",
+		// 	render: (text, record: DocumentLinesType) => (
+		// 		<span>{`${formatNumber(+record.quantity * +record.price)} ${record.currency}`}</span>
+		// 	),
+		// },
 	];
 
 	const handleAddToReturnHistory = () => {
@@ -117,10 +117,10 @@ export default function ViewReturns({ isOpen, onClose, data, isShowAddBtn }: Vie
 						<Input value={data?.docDate} disabled />
 					</div>
 
-					<div className="flex flex-col  gap-1">
+					{/* <div className="flex flex-col  gap-1">
 						<span className="font-semibold">{t("docTotal")}</span>
 						<Input value={`${formatNumber(data?.docTotal)} ${data?.docCurrency}`} disabled />
-					</div>
+					</div> */}
 				</div>
 				<div className="mt-5">
 					<Table columns={columns} data={docLines} />

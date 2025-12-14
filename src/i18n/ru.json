@@ -181,7 +181,9 @@
 			"fakt": "Факт",
 			"startDate": "Дата начала",
 			"endDate": "Дата окончания",
-			"printA4Pdf": "Печать PDF"
+			"printA4Pdf": "Печать PDF",
+			"unitOfMeasure": "Ед-изм",
+			"item": "Товар"
 		},
 
 		"services": {},

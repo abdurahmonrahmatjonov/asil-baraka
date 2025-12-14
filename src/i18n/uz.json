@@ -182,7 +182,9 @@
 			"fakt": "Fakt",
 			"startDate": "Boshlanish sanasi",
 			"endDate": "Tugash sanasi",
-			"printA4Pdf": "PDF chop etish"
+			"printA4Pdf": "PDF chop etish",
+			"unitOfMeasure": "O‘lchov birligi",
+			"item": "Mahsulot"
 		},
 
 		"services": {},

@@ -61,6 +61,7 @@ const AddSales = ({ isOpen, onClose }: AddModalType) => {
 	const [searchCardName, setSearchCardName] = useState<string>("");
 	const [searchItemName, setSearchItemName] = useState<string>("");
 	const [bpModalOpen, setBpModalOpen] = useState<boolean>(false);
+	const [priceList, setPriceList] = useState<string>("");
 
 	const { data: bpData = [] } = useGet<BpTypes[]>(
 		["businessPartners", "businesspartners", searchCardName],
@@ -76,12 +77,17 @@ const AddSales = ({ isOpen, onClose }: AddModalType) => {
 	);
 
 	const { data: itemsData = [] } = useGet<ItemTypes[]>(
-		["items", "items/items", searchItemName, 100000, 0],
+		["items", "items/items", searchItemName, 100000, 0, priceList],
 		generateUrlWithParams("items/items", {
 			itemName: String(searchItemName),
 			pageSize: 100000,
 			skip: 0,
-		})
+			PriceList: priceList,
+		}),
+		true,
+		{
+			enabled: !!priceList,
+		}
 	);
 
 	const { data: docRateFromApi = [] } = useGet<string | number>(
@@ -105,6 +111,7 @@ const AddSales = ({ isOpen, onClose }: AddModalType) => {
 	const bpOptions = bpData.map((bp) => ({
 		value: bp.cardCode,
 		label: bp.cardName,
+		data: bp,
 	}));
 
 	const whsOptions = whsData.map((whs) => ({
@@ -159,9 +166,7 @@ const AddSales = ({ isOpen, onClose }: AddModalType) => {
 				quantity: +line.quantity,
 				currency: data.currency,
 				warehouseCode: data?.whsCode,
-				baseType: -1,
-				baseEntry: null,
-				baseLine: null,
+				discountPercent: 0,
 			};
 		});
 
@@ -170,13 +175,14 @@ const AddSales = ({ isOpen, onClose }: AddModalType) => {
 			docCurrency: data.currency,
 			docDate: data.docDate,
 			docDueDate: data.docDueDate,
-			salesPersonCode: data.slpCode,
+			salesPersonCode: data.slpCode || "-1",
 			comments: data.comments,
 			docRate: data.currency === "USD" ? 1 : data.docRate,
+			discountPercent: 0,
 			documentLines,
 		};
 		sendRequest({
-			url: "/sales/invoices",
+			url: "/sales/sales-invoices",
 			data: body,
 			method: "POST",
 			successMessage: t("success"),
@@ -234,6 +240,7 @@ const AddSales = ({ isOpen, onClose }: AddModalType) => {
 						onSelect={(value, label) => {
 							handleSelectItem(value, label, index);
 						}}
+						disabled={data?.cardCode ? false : true}
 						value={record.itemName}
 					/>
 				);
@@ -253,9 +260,9 @@ const AddSales = ({ isOpen, onClose }: AddModalType) => {
 						onChange={(e) => {
 							const updatedDocLines = [...docLines];
 							updatedDocLines[index].quantity = removeSpaces(e.target.value);
-
 							setDocLines(updatedDocLines);
 						}}
+						disabled={data?.cardCode ? false : true}
 					/>
 				);
 			},
@@ -277,6 +284,7 @@ const AddSales = ({ isOpen, onClose }: AddModalType) => {
 							updatedDocLines[index].price = removeSpaces(e.target.value);
 							setDocLines(updatedDocLines);
 						}}
+						disabled={data?.cardCode ? false : true}
 					/>
 				);
 			},
@@ -323,12 +331,16 @@ const AddSales = ({ isOpen, onClose }: AddModalType) => {
 									setData({ ...data, cardName: value });
 									if (value === "") {
 										setData({ ...data, cardCode: "", cardName: "" });
+										setPriceList("");
+										setDocLines([initialDocLine]);
 									}
 								}}
 								value={data?.cardName}
 								onSelect={(value, label) => {
+									console.log("label", label);
 									setSearchCardName("");
 									setData({ ...data, cardName: label.label as string, cardCode: value });
+									setPriceList(label.data.priceList);
 								}}
 							/>
 							<Button
@@ -424,11 +436,8 @@ const AddSales = ({ isOpen, onClose }: AddModalType) => {
 							isSending ||
 							!data.cardCode ||
 							!data.docDate ||
-							!data.docRate ||
 							!data.currency ||
-							!data.slpCode ||
-							docLines.some((item) => !item.itemCode) ||
-							docLines.some((item) => !item.whsCode)
+							docLines.some((item) => !item.itemCode)
 						}
 						hasShadow={false}
 						className="w-[200px] bg-[#0A4D68] h-[35px] rounded-lg text-white hover:!text-white hover:!bg-secondary-hover"

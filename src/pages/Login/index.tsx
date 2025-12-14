@@ -31,8 +31,8 @@ function LoginScreen() {
 		if (result.code !== 200) return;
 		setCookie("access_token", result.data?.accessToken as string);
 		setCookie("get_me", JSON.stringify(result.data));
-		setCookie("job_title", result.data?.jobTitle.toLowerCase() as string);
-		window.location.href = "sales/sales";
+		setCookie("job_title", result.data?.jobTitle?.toLowerCase() as string);
+		window.location.href = "sales/finished-sales";
 	};
 	return (
 		<div className="w-screen h-screen  flex items-center justify-center bg-primary-light">

@@ -26,7 +26,9 @@ export default function AppRoutes() {
 		<Routes>
 			<Route
 				index
-				element={<Navigate to={isAuthenticated ? PATHS.SALES.SALES : PATHS.LOGIN} replace />}
+				element={
+					<Navigate to={isAuthenticated ? PATHS.SALES.FINISHED_SALES : PATHS.LOGIN} replace />
+				}
 			/>
 			<Route path={PATHS.ROOT} element={<RootLayout />}>
 				{StocksRoutes({ isAuthenticated, userRole })}
@@ -37,13 +39,17 @@ export default function AppRoutes() {
 			</Route>
 			<Route
 				path="/"
-				element={<Navigate to={isAuthenticated ? PATHS.SALES.SALES : PATHS.LOGIN} replace />}
+				element={
+					<Navigate to={isAuthenticated ? PATHS.SALES.FINISHED_SALES : PATHS.LOGIN} replace />
+				}
 			/>
 			{PdfRoutes({ isAuthenticated, userRole })}
 
 			<Route
 				path={PATHS.LOGIN}
-				element={isAuthenticated ? <Navigate to={PATHS.SALES.SALES} replace /> : <LoginScreen />}
+				element={
+					isAuthenticated ? <Navigate to={PATHS.SALES.FINISHED_SALES} replace /> : <LoginScreen />
+				}
 			/>
 			<Route path={PATHS.ERROR} element={<ErrorScreen />} />
 			<Route path={PATHS.NOT_FOUND} element={<NotFoundScreen />} />

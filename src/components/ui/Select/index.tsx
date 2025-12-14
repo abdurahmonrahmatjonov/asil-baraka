@@ -23,7 +23,7 @@ export default function Select({
 	return (
 		<ConfigProvider theme={darkMode ? darkTheme : lightTheme}>
 			<AntSelect
-				className={clsx("min-w-40 ", className)}
+				className={clsx("min-w-32 ", className)}
 				loading={loading}
 				allowClear
 				showSearch

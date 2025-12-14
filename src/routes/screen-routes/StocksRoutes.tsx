@@ -19,9 +19,9 @@ function StocksRoutes({
 }) {
 	const { t } = useTranslation("");
 	const tabs = [
-		{ name: t("tab.stocks.stock_items"), path: PATHS.STOCKS.STOCK_PRODUCTS },
 		{ name: t("tab.stocks.incoming_items"), path: PATHS.STOCKS.INCOMING_PRODUCTS },
 		{ name: t("tab.stocks.receiving_items"), path: PATHS.STOCKS.RECEIVING_PRODUCTS },
+		{ name: t("tab.stocks.stock_items"), path: PATHS.STOCKS.STOCK_PRODUCTS },
 	];
 	return (
 		<Route element={<MenuLayout tabs={tabs} />}>
