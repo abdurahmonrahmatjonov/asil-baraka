@@ -55,9 +55,9 @@ const SalesPDF: React.FC = () => {
 							<th className="border border-black px-2 py-1">Наименование товаров</th>
 							<th className="border border-black px-2 py-1">Ед. изм-ния</th>
 							<th className="border border-black px-2 py-1">Заказ</th>
-							<th className="border border-black px-2 py-1">Базовая цена</th>
+							{/* <th className="border border-black px-2 py-1">Базовая цена</th>
 							<th className="border border-black px-2 py-1">Цена для дилера</th>
-							<th className="border border-black px-2 py-1">Сумма</th>
+							<th className="border border-black px-2 py-1">Сумма</th> */}
 						</tr>
 					</thead>
 					<tbody>
@@ -68,7 +68,7 @@ const SalesPDF: React.FC = () => {
 									<td className="border border-black  px-2 py-1">{item.itemDescription}</td>
 									<td className="border text-center border-black  px-2 py-1">{item.ugpName}</td>
 									<td className="border border-black  px-2 py-1 text-center">{item.quantity}</td>
-									<td className="border border-black  px-2 py-1 text-center">{`${new Intl.NumberFormat(
+									{/* <td className="border border-black  px-2 py-1 text-center">{`${new Intl.NumberFormat(
 										"fr-FR"
 									).format(+item.itemPrice)} `}</td>
 									<td className="border border-black  px-2 py-1 text-center">{`${new Intl.NumberFormat(
@@ -76,7 +76,7 @@ const SalesPDF: React.FC = () => {
 									).format(+item.price)} `}</td>
 									<td className="border border-black  px-2 py-1 text-center">{`${new Intl.NumberFormat(
 										"fr-FR"
-									).format(+item.price * +item.quantity)} `}</td>
+									).format(+item.price * +item.quantity)} `}</td> */}
 								</tr>
 							);
 						})}
@@ -89,12 +89,12 @@ const SalesPDF: React.FC = () => {
 									data?.documentLines.reduce((total, item) => total + Number(item.quantity), 0)
 								)}
 							</td>
-							<td className="border border-black px-2 py-1 text-center font-semibold" colSpan={1}>
+							{/* <td className="border border-black px-2 py-1 text-center font-semibold" colSpan={1}>
 								{new Intl.NumberFormat("fr-FR").format(
 									data?.documentLines.reduce((total, item) => total + Number(item.itemPrice), 0)
 								)}
-							</td>
-							<td className="border border-black px-2 py-1 text-center font-semibold" colSpan={1}>
+							</td> */}
+							{/* <td className="border border-black px-2 py-1 text-center font-semibold" colSpan={1}>
 								{new Intl.NumberFormat("fr-FR").format(
 									data?.documentLines.reduce((total, item) => total + Number(item.price), 0)
 								)}
@@ -106,17 +106,17 @@ const SalesPDF: React.FC = () => {
 										0
 									)
 								)}
-							</td>
+							</td> */}
 						</tr>
 					</tfoot>
 				</table>
 			</div>
 
 			<div className="mt-8 ">
-				<p className="mt-4 text-left font-bold">
+				{/* <p className="mt-4 text-left font-bold">
 					Всего к оплате: {data?.docTotal ? formatNumber(data.docTotal) : "0"}{" "}
 					{data?.docCurrency ?? ""}
-				</p>
+				</p> */}
 				<div className="flex justify-between items-start gap-10 mt-14">
 					<div className="text-center w-full">
 						<div className="border-t border-gray-400 w-full mx-auto"></div>

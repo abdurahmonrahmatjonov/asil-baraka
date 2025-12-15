@@ -337,10 +337,10 @@ export default function ViewSales({
 						<Input value={data?.docDate} disabled />
 					</div>
 
-					<div className="flex flex-col  gap-1">
+					{/* <div className="flex flex-col  gap-1">
 						<span className="font-semibold">{t("docTotal")}</span>
 						<Input value={`${formatNumber(data?.docTotal)} ${data?.docCurrency}`} disabled />
-					</div>
+					</div> */}
 				</div>
 				<div className="mt-5">
 					<Table columns={columns} data={docLines} />
