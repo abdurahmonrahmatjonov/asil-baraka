@@ -32,16 +32,16 @@ const SalesPDF: React.FC = () => {
 				<div className="flex justify-between items-start gap-10 text-sm">
 					<div className="flex flex-col gap-2">
 						<span>Поставщик: СП «СOMFORT LUXURY GARDEN»</span>
-						<span>Адрес: Ташкент, Шайх.р-н, ул. Бел Тепа,5</span>
-						<span>Идентификационный номер поставщика (ИНН):303041604</span>
-						<span>НДС : 326050033138</span>
+						<span>
+							Адрес : г. Ташкент, 100054 Учтепинский район, Y. SAKKOKIY MFY, TOSHKENT XALQA
+							AVIOMOBIL YOLI
+						</span>
+						<span>Идентификационный номер поставщика (ИНН):310 106 454</span>
 					</div>
 					<div className="flex gap-5 items-start">
 						<div className="flex flex-col gap-2">
 							<span>Покупатель : {data?.cardName}</span>
 							<span>Дата : {data?.docDate}</span>
-							<span>Регистрационный код плательщика</span>
-							<span>НДС</span>
 						</div>
 					</div>
 				</div>
