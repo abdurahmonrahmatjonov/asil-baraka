@@ -154,6 +154,7 @@ const AddSales = ({ isOpen, onClose }: AddModalType) => {
 		updatedDocLines[index].itemCode = value as string;
 		updatedDocLines[index].itemName = label.label;
 		updatedDocLines[index].price = data.price;
+		updatedDocLines[index].ugpName = data.uomName;
 		setDocLines(updatedDocLines);
 	};
 
@@ -288,6 +289,11 @@ const AddSales = ({ isOpen, onClose }: AddModalType) => {
 					/>
 				);
 			},
+		},
+		{
+			title: t("ugpName"),
+			dataIndex: "ugpName",
+			key: "ugpName",
 		},
 	];
 

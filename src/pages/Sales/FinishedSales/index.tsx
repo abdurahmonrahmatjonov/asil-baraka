@@ -8,9 +8,7 @@ import Button from "@/components/ui/Button";
 import { useGet } from "@/hooks/useGet";
 import { useLanguage } from "@/hooks/useLanguage";
 import { debouncedSet } from "@helpers/debounce";
-import formatNumber from "@/helpers/formatNumber";
 import { generateUrlWithParams } from "@/lib/helpers";
-
 import type { FilterTypes } from "@/components/ui/Filter/types";
 import type { ColumnsTypes } from "@/components/ui/Table/types";
 import type { SalesDataTypes, SalesResponseTypes } from "@/types/api/Sales";

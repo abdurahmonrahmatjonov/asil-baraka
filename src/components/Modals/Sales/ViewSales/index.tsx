@@ -152,43 +152,43 @@ export default function ViewSales({
 		},
 		{ title: t("uomName"), dataIndex: "ugpName", key: "ugpName" },
 
-		{
-			title: t("price"),
-			dataIndex: "price",
-			key: "price",
-			type: "number",
-			render: (text, record, index) => {
-				return isChange ? (
-					<Input
-						type="text"
-						value={formatNumberInput(text) as string}
-						className="!min-w-24"
-						onChange={(e) => {
-							const updatedDocLines = [...docLines];
-							updatedDocLines[index].price = removeSpaces(e.target.value);
-							setDocLines(updatedDocLines);
-						}}
-					/>
-				) : (
-					<span className="text-center">{formatNumber(text)}</span>
-				);
-			},
-			// render: (text, record: DocLineType) => (
-			// 	<span>{`${formatNumber(text)} ${record.currency ?? ""}`}</span>
-			// ),
-		},
+		// {
+		// 	title: t("price"),
+		// 	dataIndex: "price",
+		// 	key: "price",
+		// 	type: "number",
+		// 	render: (text, record, index) => {
+		// 		return isChange ? (
+		// 			<Input
+		// 				type="text"
+		// 				value={formatNumberInput(text) as string}
+		// 				className="!min-w-24"
+		// 				onChange={(e) => {
+		// 					const updatedDocLines = [...docLines];
+		// 					updatedDocLines[index].price = removeSpaces(e.target.value);
+		// 					setDocLines(updatedDocLines);
+		// 				}}
+		// 			/>
+		// 		) : (
+		// 			<span className="text-center">{formatNumber(text)}</span>
+		// 		);
+		// 	},
+		// 	// render: (text, record: DocLineType) => (
+		// 	// 	<span>{`${formatNumber(text)} ${record.currency ?? ""}`}</span>
+		// 	// ),
+		// },
 		{ title: t("whsName"), dataIndex: "whsName", key: "whsName" },
 
-		{
-			title: t("lineTotal"),
-			dataIndex: "lineTotal",
-			key: "lineTotal",
-			render: (text, record: DocLineType) => (
-				<span>{`${formatNumberInput(
-					+removeSpaces(record.quantity) * +removeSpaces(record.price)
-				)} ${record.currency ?? ""}`}</span>
-			),
-		},
+		// {
+		// 	title: t("lineTotal"),
+		// 	dataIndex: "lineTotal",
+		// 	key: "lineTotal",
+		// 	render: (text, record: DocLineType) => (
+		// 		<span>{`${formatNumberInput(
+		// 			+removeSpaces(record.quantity) * +removeSpaces(record.price)
+		// 		)} ${record.currency ?? ""}`}</span>
+		// 	),
+		// },
 	];
 	if (isChange) {
 		columns.push({
