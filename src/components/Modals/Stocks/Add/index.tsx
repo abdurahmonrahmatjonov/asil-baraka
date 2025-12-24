@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Modal } from "antd";
 import type { AddModalType } from "../../BussinessPartners/Create/types";
 import Table from "@/components/ui/Table";
@@ -48,23 +48,31 @@ export default function AddStocks({ isOpen, onClose }: AddModalType) {
 	const [viewOnHandItemsModalOpen, setViewOnHandItemsModalOpen] = useState<boolean>(false);
 	const [selectedRowData, setSelectedRowData] = useState<InventoryTRLinesTypes>(null);
 
-	const { data: itemsData = [] } = useGet<ItemTypes[]>(
-		["slp", "items/items", searchItemName, 100000, 0],
+	const [itemsData, setItemsData] = useState<ItemTypes[]>([]);
+
+	const { data: itemsResData = [] } = useGet<ItemTypes[]>(
+		["itemsSearch", "items/items", searchItemName, 100000, 0],
 		generateUrlWithParams("items/items", {
 			itemName: String(searchItemName),
 			pageSize: 100000,
 			skip: 0,
+			PriceList: 1,
 		})
 	);
 
+	useEffect(() => {
+		setItemsData(itemsResData);
+		console.log("itemsResData", itemsResData);
+	}, [itemsResData]);
+
 	const { data: whsData = [] } = useGet<WhsTypes[]>(
-		["slp", "warehouses"],
+		["whs", "warehouses"],
 		generateUrlWithParams("warehouses", {})
 	);
 
 	const optionsItemName = itemsData
 		?.filter((item) => docLines.every((line) => line.itemCode !== item.itemCode))
-		.map((item) => ({
+		?.map((item) => ({
 			value: item.itemCode,
 			label: item.itemName,
 			data: item,
@@ -75,15 +83,19 @@ export default function AddStocks({ isOpen, onClose }: AddModalType) {
 		label: whs.warehouseName,
 	}));
 
+	console.log("optionsItemName", optionsItemName);
+
 	const columns: ColumnsTypes[] = [
 		{
 			title: t("itemName"),
 			dataIndex: "itemDescription",
 			key: "itemDescription",
+			width: 300,
 			render: (text, record, index) => (
 				<AutoComplete
 					className="w-full"
 					placeholder="Search items..."
+					key={index}
 					options={optionsItemName}
 					onSearch={(value) => {
 						handleSearchItem(value, index);

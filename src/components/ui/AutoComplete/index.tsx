@@ -64,8 +64,8 @@ export default function AutoComplete({
 				onSelect={onSelect}
 				onSearch={onSearch}
 				size={size}
-				filterOption={filterOption}
-				showSearch
+				// filterOption={filterOption}
+				// showSearch
 				{...props}
 			/>
 		</ConfigProvider>
